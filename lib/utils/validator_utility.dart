@@ -13,10 +13,19 @@ class ValidatorUtility {
   }
 
   String? validatePassword(String? value) {
-    if(value == null || value.isEmpty) {
+    if (value == null || value.isEmpty) {
       return 'Password cannot be empty';
     }
     return null;
+  }
 
+  String? requiredValidation(String? value, {int minimumChars = 0}) {
+    if (value == null || value.isEmpty) {
+      return 'This field cannot be empty';
+    }
+    if (value.length < minimumChars) {
+      return 'Must be at least $minimumChars characters long';
+    }
+    return null;
   }
 }
